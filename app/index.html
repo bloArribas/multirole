@@ -19,10 +19,10 @@
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<div ui-view></div>
+
 <ul class="menu">
-    <li><a ui-sref="#/view1">view1</a></li>
-    <li><a ui-sref="#/view2">view2</a></li>
+    <li><a ui-sref='view1'>view1</a></li>
+    <li><a ui-sref='view2'>view2</a></li>
 </ul>
 
 <!--[if lt IE 7]>
@@ -30,7 +30,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ng-view></div>
+<div ui-view></div>
 
 <div>Angular seed app: v<span app-version></span></div>
 
@@ -39,7 +39,11 @@
 -->
 <!--Dependencies-->
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-permission/dist/angular-permission.min.js"></script>
+<script src="bower_components/angular-permission/dist/angular-permission-ui.min.js"></script>
+<script src="bower_components/angular-permission/dist/angular-permission-ng.min.js"></script>
+<script src="bower_components/ui-router-extras/release/ct-ui-router-extras.min.js"></script>
 <!--Core-->
 <script src="app.js"></script>
 <script src="view1/view1.js"></script>

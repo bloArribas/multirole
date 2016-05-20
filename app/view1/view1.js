@@ -2,7 +2,13 @@
 
     'use strict';
 
-    angular.module('myApp.view1', ['ui.router'])
+    angular.module('myApp.view1',
+        [
+            'ui.router',
+            'ct.ui.router.extras.core',
+            'permission',
+            'permission.ui'
+        ])
 
         .config(['$stateProvider', function ($stateProvider) {
             $stateProvider
