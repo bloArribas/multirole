@@ -1,14 +1,20 @@
-'use strict';
+(function () {
 
-angular.module('myApp.view1', ['ngRoute'])
+    'use strict';
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
+    angular.module('myApp.view1', ['ui.router'])
 
-.controller('View1Ctrl', [function() {
+        .config(['$stateProvider', function ($stateProvider) {
+            $stateProvider
+                .state('view1', {
+                    url: "/view1",
+                    templateUrl: "view1/view1.html"
+                })
+        }])
 
-}]);
+        .controller('View1Ctrl', [function () {
+
+        }]);
+}());
+
+

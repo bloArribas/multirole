@@ -1,14 +1,19 @@
-'use strict';
+(function () {
 
-angular.module('myApp.view2', ['ngRoute'])
+    'use strict';
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
-    templateUrl: 'view2/view2.html',
-    controller: 'View2Ctrl'
-  });
-}])
+    angular.module('myApp.view2', ['ui.router'])
 
-.controller('View2Ctrl', [function() {
+        .config(['$stateProvider', function ($stateProvider) {
+            $stateProvider
+                .state('view2', {
+                    url: "/view2",
+                    templateUrl: "view2/view2.html"
+                })
+        }])
 
-}]);
+        .controller('View2Ctrl', [function () {
+
+        }]);
+
+}());
