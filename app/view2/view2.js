@@ -8,7 +8,13 @@
             $stateProvider
                 .state('view2', {
                     url: "/view2",
-                    templateUrl: "view2/view2.html"
+                    templateUrl: "view2/view2.html",
+                    data: {
+                        permissions: {
+                            only: 'isLoggedIn',
+                            redirectTo: 'view1'
+                        }
+                    }
                 })
         }])
 
