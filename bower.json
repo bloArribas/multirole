@@ -15,6 +15,7 @@
     "angular-ui-router": "^0.3.0"
   },
   "devDependencies": {
-    "ui-router-extras": "^0.1.2"
+    "ui-router-extras": "^0.1.2",
+    "angular-cookies": "^1.5.5"
   }
 }
