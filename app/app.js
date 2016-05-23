@@ -7,7 +7,10 @@
         'myApp.view1',
         'myApp.view2',
         'myApp.version',
-        'ngCookies'
+        'ngCookies',
+        'ct.ui.router.extras.core',
+        'permission',
+        'permission.ui'
     ])
         .config(['$urlRouterProvider', function ($urlRouterProvider) {
 
@@ -18,7 +21,7 @@
 
         }])
 
-        .config(['$urlRouterProvider', '$httpProvider', '$stateProvider', function ($urlRouterProvider, $httpProvider, $stateProvider) {
+        .config(['$urlRouterProvider', '$httpProvider', '$provide', function ($urlRouterProvider, $httpProvider, $provide) {
 
             $provide.factory('AuthTokenManager', function ($q, $cookies, $location) {
                 return {
