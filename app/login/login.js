@@ -34,6 +34,8 @@
                             $rootScope.roles = RoleStore.getStore();
                             $rootScope.permissions = PermissionStore.getStore();
 
+                            $scope.$emit('toggleAdminEmit');
+
                             $state.go('dashboard');
 
                         }, function (error) {

@@ -82,7 +82,7 @@
             isLoggedIn: false
         })
 
-        .controller('myAppCtrl', ['appAuth', '$state', function (appAuth, $state) {
+        .controller('myAppCtrl', ['appAuth', '$state', '$rootScope', function (appAuth, $state, $rootScope) {
 
             this.toggleAdmin = toggleAdmin;
 
@@ -91,12 +91,20 @@
             this.isLoggedIn = appAuth.isLoggedIn;
             this.isAdmin = appAuth.isAdmin;
 
+            console.log('myAppCtrl isAdmin: ' + appAuth.isAdmin);
+            console.log('myAppCtrl isLoggedIn: ' + appAuth.isLoggedIn);
+
             function toggleAdmin() {
                 appAuth.isAdmin = !appAuth.isAdmin;
                 console.log('myAppCtrl isAdmin: ' + appAuth.isAdmin);
                 console.log('myAppCtrl isLoggedIn: ' + appAuth.isLoggedIn);
                 $state.reload();
             }
+
+            $rootScope.$on('toggleAdminEmit', function(event, args, appAuth) {
+                this.isLoggedIn = appAuth.isLoggedIn;
+                this.isAdmin = appAuth.isAdmin;
+            });
 
         }])
 

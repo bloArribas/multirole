@@ -23,7 +23,7 @@
 <ul class="menu" ng-if="appReady">
     <li><a ui-sref='login'>Login</a></li>
     <li><a ui-sref='dashboard'>Dashboard</a></li>
-    <li permission permission-only="'ADMIN'"><a ui-sref='dashboardAdmin'>Admin</a></li>
+    <li ng-show="ctrl.isAdmin"><a ui-sref='dashboardAdmin'>Admin</a></li>
     <li permission permission-only="'isLoggedIn'"><button ng-click='ctrl.toggleAdmin()' class="button btn">Toggle</button></li>
 </ul>
 
@@ -46,7 +46,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ui-view ></div>
+<div ui-view></div>
 
 <div>Angular seed app: v<span app-version></span></div>
 
