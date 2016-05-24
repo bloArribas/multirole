@@ -18,27 +18,35 @@
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+<body ng-controller="myAppCtrl as ctrl">
 
-<ul class="menu">
+<ul class="menu" ng-if="appReady">
     <li><a ui-sref='login'>Login</a></li>
     <li><a ui-sref='dashboard'>Dashboard</a></li>
-    <li permission-only="'ADMIN'"><a ui-sref='dashboardAdmin'>Admin</a></li>
+    <li permission permission-only="'ADMIN'"><a ui-sref='dashboardAdmin'>Admin</a></li>
+    <li permission permission-only="'isLoggedIn'"><button ng-click='ctrl.toggleAdmin()' class="button btn">Toggle</button></li>
 </ul>
 
+<span>isAdmin {{appAuth.isAdmin}}</span>
+<span>isLoggedIn {{appAuth.isLoggedIn}}</span>
+
+
 <div permission
-     permission-only="'ADMIN'">
+     permission-only="'isLoggedIn'">
     <span>Congrats! You are logged in.</span>
 </div>
 
+<span permission permission-only="'ADMIN'">I'm an admin!</span>
+
 <div ng-repeat="role in roles">{{role}}</div>
+<div ng-repeat="permission in permissions">{{permission}}</div>
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ui-view></div>
+<div ui-view ></div>
 
 <div>Angular seed app: v<span app-version></span></div>
 

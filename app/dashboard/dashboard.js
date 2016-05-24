@@ -8,6 +8,7 @@
             $stateProvider
                 .state('dashboard', {
                     url: "/dashboard",
+                    controller: 'DashboardCtrl',
                     templateUrl: "dashboard/dashboard.html",
                     data: {
                         permissions: {
@@ -18,7 +19,10 @@
                 })
         }])
 
-        .controller('DashboardCtrl', [function () {
+        .controller('DashboardCtrl', ['appAuth', function (appAuth) {
+
+            console.log('DashboardCtrl isAdmin: ' + appAuth.isAdmin);
+            console.log('DashboardCtrl isLoggedIn: ' + appAuth.isLoggedIn);
 
         }]);
 

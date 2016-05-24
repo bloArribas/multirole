@@ -63,5 +63,41 @@
             $httpProvider.interceptors.push('AuthTokenManager');
         }])
 
+        .run(function (RoleStore, PermissionStore, appAuth, $rootScope) {
+
+            RoleStore.defineRole('ADMIN', function () {
+                return appAuth.isAdmin;
+            });
+
+            PermissionStore.definePermission('isLoggedIn', function () {
+                return appAuth.isLoggedIn;
+            });
+
+            $rootScope.appReady = true;
+
+        })
+
+        .value('appAuth', {
+            isAdmin: false,
+            isLoggedIn: false
+        })
+
+        .controller('myAppCtrl', ['appAuth', '$state', function (appAuth, $state) {
+
+            this.toggleAdmin = toggleAdmin;
+
+            this.appAuth = appAuth;
+
+            this.isLoggedIn = appAuth.isLoggedIn;
+            this.isAdmin = appAuth.isAdmin;
+
+            function toggleAdmin() {
+                appAuth.isAdmin = !appAuth.isAdmin;
+                console.log('myAppCtrl isAdmin: ' + appAuth.isAdmin);
+                console.log('myAppCtrl isLoggedIn: ' + appAuth.isLoggedIn);
+                $state.reload();
+            }
+
+        }])
 
 }());

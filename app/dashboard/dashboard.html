@@ -7,9 +7,12 @@
 </p>
 
 
-<span permission permission-only="'canAccessAdminDashboard'">I'm an admin!</span>
+<span permission permission-only="'ADMIN'">I'm an admin!</span>
 
 <div permission
-     permission-only="'canAccessAdminDashboard'">
+     permission-only="'isLoggedIn'">
     <span>Congrats! You are logged in.</span>
 </div>
+
+<span>isAdmin {{appAuth.isAdmin}}</span>
+<span>isLoggedIn {{appAuth.isLoggedIn}}</span>

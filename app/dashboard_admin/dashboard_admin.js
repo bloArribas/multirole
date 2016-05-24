@@ -8,6 +8,7 @@
             $stateProvider
                 .state('dashboardAdmin', {
                     url: "/dashboardAdmin",
+                    controller: 'DashboardAdminCtrl',
                     templateUrl: "dashboard_admin/dashboard_admin.html",
                     data: {
                         permissions: {
@@ -18,7 +19,7 @@
                 })
         }])
 
-        .controller('DashboardCtrl', [function () {
+        .controller('DashboardAdminCtrl', [function () {
 
         }]);
 

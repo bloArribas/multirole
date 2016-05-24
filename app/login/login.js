@@ -19,8 +19,8 @@
                 })
         }])
 
-        .controller('LoginCtrl', ['API_SERVER', '$http', '$scope', '$state', 'PermissionStore', 'loginService', 'RoleStore', '$rootScope',
-            function (API_SERVER, $http, $scope, $state, PermissionStore, loginService, RoleStore, $rootScope) {
+        .controller('LoginCtrl', ['API_SERVER', '$http', '$scope', '$state', 'PermissionStore', 'loginService', 'RoleStore', '$rootScope', 'appAuth',
+            function (API_SERVER, $http, $scope, $state, PermissionStore, loginService, RoleStore, $rootScope, appAuth) {
 
                 $scope.submit = function () {
 
@@ -28,17 +28,11 @@
 
                         .then(function (data) {
 
-                            PermissionStore.definePermission('isLoggedIn', function () {
-                                return true;
-                            });
-
-                            RoleStore.defineManyRoles({
-                                'AUTHORIZED': function () { return true },
-                                'USER': ['isLoggedIn'],
-                                'ADMIN': ['canEditUsers', 'canAccessAdminDashboard']
-                            });
+                            appAuth.isLoggedIn = true;
+                            appAuth.isAdmin = true;
 
                             $rootScope.roles = RoleStore.getStore();
+                            $rootScope.permissions = PermissionStore.getStore();
 
                             $state.go('dashboard');
 
