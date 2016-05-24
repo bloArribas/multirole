@@ -2,23 +2,23 @@
 
     'use strict';
 
-    angular.module('myApp.view2', ['ui.router'])
+    angular.module('myApp.dashboard', ['ui.router'])
 
         .config(['$stateProvider', function ($stateProvider) {
             $stateProvider
-                .state('view2', {
-                    url: "/view2",
-                    templateUrl: "view2/view2.html",
+                .state('dashboard', {
+                    url: "/dashboard",
+                    templateUrl: "dashboard/dashboard.html",
                     data: {
                         permissions: {
                             only: 'isLoggedIn',
-                            redirectTo: 'view1'
+                            redirectTo: 'login'
                         }
                     }
                 })
         }])
 
-        .controller('View2Ctrl', [function () {
+        .controller('DashboardCtrl', [function () {
 
         }]);
 

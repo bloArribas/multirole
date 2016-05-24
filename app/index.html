@@ -21,9 +21,17 @@
 <body>
 
 <ul class="menu">
-    <li><a ui-sref='view1'>view1</a></li>
-    <li><a ui-sref='view2'>view2</a></li>
+    <li><a ui-sref='login'>Login</a></li>
+    <li><a ui-sref='dashboard'>Dashboard</a></li>
+    <li permission-only="'ADMIN'"><a ui-sref='dashboardAdmin'>Admin</a></li>
 </ul>
+
+<div permission
+     permission-only="'ADMIN'">
+    <span>Congrats! You are logged in.</span>
+</div>
+
+<div ng-repeat="role in roles">{{role}}</div>
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -47,8 +55,11 @@
 <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 <!--Core-->
 <script src="app.js"></script>
-<script src="view1/view1.js"></script>
-<script src="view2/view2.js"></script>
+<script src="constants/constants.js"></script>
+<script src="login/login.js"></script>
+<script src="dashboard/dashboard.js"></script>
+<script src="dashboard_admin/dashboard_admin.js"></script>
+<script src="services/authenticationService.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>

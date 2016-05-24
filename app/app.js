@@ -4,8 +4,10 @@
 
     angular.module('myApp', [
         'ui.router',
-        'myApp.view1',
-        'myApp.view2',
+        'myApp.login',
+        'myApp.dashboard',
+        'myApp.dashboardAdmin',
+        'myApp.services',
         'myApp.version',
         'ngCookies',
         'ct.ui.router.extras.core',
@@ -16,7 +18,7 @@
 
             $urlRouterProvider.otherwise(function ($injector) {
                 var $state = $injector.get("$state");
-                $state.go('view1');
+                $state.go('login');
             });
 
         }])
