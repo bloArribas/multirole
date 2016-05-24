@@ -19,8 +19,8 @@
                 })
         }])
 
-        .controller('LoginCtrl', ['API_SERVER', '$http', '$scope', '$state', 'PermissionStore', 'loginService', 'RoleStore', '$rootScope', 'appAuth',
-            function (API_SERVER, $http, $scope, $state, PermissionStore, loginService, RoleStore, $rootScope, appAuth) {
+        .controller('LoginCtrl', ['API_SERVER', '$http', '$scope', '$state', 'PermissionStore', 'loginService', 'RoleStore', '$rootScope',
+            function (API_SERVER, $http, $scope, $state, PermissionStore, loginService, RoleStore, $rootScope) {
 
                 $scope.submit = function () {
 
@@ -28,13 +28,8 @@
 
                         .then(function (data) {
 
-                            appAuth.isLoggedIn = true;
-                            appAuth.isAdmin = true;
-
-                            $rootScope.roles = RoleStore.getStore();
-                            $rootScope.permissions = PermissionStore.getStore();
-
-                            $scope.$emit('toggleAdminEmit');
+                            $rootScope.isLoggedIn = true;
+                            $scope.$emit('userLoggedIn');
 
                             $state.go('dashboard');
 

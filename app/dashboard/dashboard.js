@@ -19,11 +19,8 @@
                 })
         }])
 
-        .controller('DashboardCtrl', ['appAuth', function (appAuth) {
-
-            console.log('DashboardCtrl isAdmin: ' + appAuth.isAdmin);
-            console.log('DashboardCtrl isLoggedIn: ' + appAuth.isLoggedIn);
-
+        .controller('DashboardCtrl', [function () {
+            
         }]);
 
 }());

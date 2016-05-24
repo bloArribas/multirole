@@ -63,47 +63,27 @@
             $httpProvider.interceptors.push('AuthTokenManager');
         }])
 
-        .run(function (RoleStore, PermissionStore, appAuth, $rootScope) {
+        .run(function (RoleStore, PermissionStore, $rootScope, GlobalRolesService) {
+
+            $rootScope.isAdmin = GlobalRolesService.isAdmin;
+            $rootScope.isLoggedIn = GlobalRolesService.isLoggedIn;
 
             RoleStore.defineRole('ADMIN', function () {
-                return appAuth.isAdmin;
+                return $rootScope.isAdmin;
             });
 
             PermissionStore.definePermission('isLoggedIn', function () {
-                return appAuth.isLoggedIn;
+                return $rootScope.isLoggedIn;
             });
 
             $rootScope.appReady = true;
-
         })
 
-        .value('appAuth', {
-            isAdmin: false,
-            isLoggedIn: false
-        })
+        .controller('myAppCtrl', ['$state', '$rootScope', function ($state, $rootScope) {
 
-        .controller('myAppCtrl', ['appAuth', '$state', '$rootScope', function (appAuth, $state, $rootScope) {
 
-            this.toggleAdmin = toggleAdmin;
-
-            this.appAuth = appAuth;
-
-            this.isLoggedIn = appAuth.isLoggedIn;
-            this.isAdmin = appAuth.isAdmin;
-
-            console.log('myAppCtrl isAdmin: ' + appAuth.isAdmin);
-            console.log('myAppCtrl isLoggedIn: ' + appAuth.isLoggedIn);
-
-            function toggleAdmin() {
-                appAuth.isAdmin = !appAuth.isAdmin;
-                console.log('myAppCtrl isAdmin: ' + appAuth.isAdmin);
-                console.log('myAppCtrl isLoggedIn: ' + appAuth.isLoggedIn);
-                $state.reload();
-            }
-
-            $rootScope.$on('toggleAdminEmit', function(event, args, appAuth) {
-                this.isLoggedIn = appAuth.isLoggedIn;
-                this.isAdmin = appAuth.isAdmin;
+            $rootScope.$on('userLoggedIn', function(event, args) {
+                console.log('Im appctrl and I was notified');
             });
 
         }])

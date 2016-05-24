@@ -20,11 +20,11 @@
 </head>
 <body ng-controller="myAppCtrl as ctrl">
 
-<ul class="menu" ng-if="appReady">
+<ul class="menu" ng-if="appReady" ng-controller="NavigationCtrl">
     <li><a ui-sref='login'>Login</a></li>
     <li><a ui-sref='dashboard'>Dashboard</a></li>
-    <li ng-show="ctrl.isAdmin"><a ui-sref='dashboardAdmin'>Admin</a></li>
-    <li permission permission-only="'isLoggedIn'"><button ng-click='ctrl.toggleAdmin()' class="button btn">Toggle</button></li>
+    <li ng-show="isAdmin"><a ui-sref='dashboardAdmin'>Admin</a></li>
+    <li ng-show="isLoggedIn"><button ng-click='toggleAdmin()' class="button btn">Toggle</button></li>
 </ul>
 
 <span>isAdmin {{appAuth.isAdmin}}</span>
@@ -68,6 +68,8 @@
 <script src="dashboard/dashboard.js"></script>
 <script src="dashboard_admin/dashboard_admin.js"></script>
 <script src="services/authenticationService.js"></script>
+<script src="services/globalRoles.js"></script>
+<script src="navigation/navigation.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>
