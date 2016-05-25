@@ -20,24 +20,20 @@
 </head>
 <body ng-controller="myAppCtrl as ctrl">
 
-<ul class="menu" ng-if="appReady" ng-controller="NavigationCtrl">
+<ul class="menu" ng-if="appReady">
     <li><a ui-sref='login'>Login</a></li>
     <li><a ui-sref='dashboard'>Dashboard</a></li>
-    <li ng-show="isAdmin"><a ui-sref='dashboardAdmin'>Admin</a></li>
-    <li permission
-        permission-only="'isLoggedIn'"><button ng-click='toggleAdmin()' class="button btn">Toggle</button></li>
+    <li permission permission-only="'ADMIN'"><a ui-sref='dashboardAdmin'>Admin</a></li>
+    <!--<li permission permission-only="'isLoggedIn'">-->
+        <!--<button ng-click='toggleAdmin()' class="button btn">Toggle</button>-->
+    <!--</li>-->
 </ul>
 
-<span>isAdmin {{appAuth.isAdmin}}</span>
-<span>isLoggedIn {{appAuth.isLoggedIn}}</span>
-
-
-<div permission
-     permission-only="'isLoggedIn'">
+<div permission permission-only="'isLoggedIn'">
     <span>Congrats! You are logged in.</span>
 </div>
 
-<span permission permission-only="'ADMIN'">I'm an admin!</span>
+<!--<span permission permission-only="'ADMIN'">I'm an admin!</span>-->
 
 <div ng-repeat="role in roles">{{role}}</div>
 <div ng-repeat="permission in permissions">{{permission}}</div>

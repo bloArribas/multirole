@@ -65,26 +65,29 @@
 
         .run(function (RoleStore, PermissionStore, $rootScope, GlobalRolesService) {
 
-            $rootScope.isAdmin = GlobalRolesService.isAdmin;
-            $rootScope.isLoggedIn = GlobalRolesService.isLoggedIn;
+            // $rootScope.isAdmin = GlobalRolesService.isAdmin;
+            // $rootScope.isLoggedIn = GlobalRolesService.isLoggedIn;
 
-            RoleStore.defineRole('ADMIN', function () {
-//                return $rootScope.isAdmin;
-                return GlobalRolesService.isAdmin;
-            });
+            // RoleStore.defineRole('ADMIN', function () {
+            //     return GlobalRolesService.isAdmin;
+            // });
 
             PermissionStore.definePermission('isLoggedIn', function () {
-//                return $rootScope.isLoggedIn;
                 return GlobalRolesService.isLoggedIn;
             });
 
             $rootScope.appReady = true;
         })
 
-        .controller('myAppCtrl', ['$state', '$rootScope', function ($state, $rootScope) {
+        .controller('myAppCtrl', ['$state', '$rootScope', 'PermissionStore', 'GlobalRolesService', function ($state, $rootScope, PermissionStore, GlobalRolesService) {
             
             $rootScope.$on('userLoggedIn', function(event, args) {
                 console.log('Im appctrl and I was notified');
+//                 PermissionStore.definePermission('isLoggedIn', function () {
+// //                return $rootScope.isLoggedIn;
+//                     return GlobalRolesService.isLoggedIn;
+//                 });
+
             });
 
         }])

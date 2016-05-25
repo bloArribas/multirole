@@ -30,6 +30,7 @@
 
                             //$rootScope.isLoggedIn = true;
                             GlobalRolesService.isLoggedIn = true;
+                            GlobalRolesService.isAdmin = true;
                             $scope.$emit('userLoggedIn');
                             $state.go('dashboard', {},
                                 {'notify':true,
