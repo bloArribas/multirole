@@ -4,12 +4,11 @@ This project is an application skeleton for a typical [AngularJS](http://angular
 You can use it to quickly bootstrap your angular webapp projects and dev environment for these
 projects.
 
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
-
-The seed app doesn't do much, just shows how to wire two controllers and views together.
-
 The angular version included is 1.5.5.
+
+The project is bases in [Angular Permission](https://github.com/Narzerus/angular-permission) project.
+
+
 
 
 ## Getting Started
