@@ -24,7 +24,8 @@
     <li><a ui-sref='login'>Login</a></li>
     <li><a ui-sref='dashboard'>Dashboard</a></li>
     <li ng-show="isAdmin"><a ui-sref='dashboardAdmin'>Admin</a></li>
-    <li ng-show="isLoggedIn"><button ng-click='toggleAdmin()' class="button btn">Toggle</button></li>
+    <li permission
+        permission-only="'isLoggedIn'"><button ng-click='toggleAdmin()' class="button btn">Toggle</button></li>
 </ul>
 
 <span>isAdmin {{appAuth.isAdmin}}</span>

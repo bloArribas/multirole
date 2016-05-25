@@ -69,19 +69,20 @@
             $rootScope.isLoggedIn = GlobalRolesService.isLoggedIn;
 
             RoleStore.defineRole('ADMIN', function () {
-                return $rootScope.isAdmin;
+//                return $rootScope.isAdmin;
+                return GlobalRolesService.isAdmin;
             });
 
             PermissionStore.definePermission('isLoggedIn', function () {
-                return $rootScope.isLoggedIn;
+//                return $rootScope.isLoggedIn;
+                return GlobalRolesService.isLoggedIn;
             });
 
             $rootScope.appReady = true;
         })
 
         .controller('myAppCtrl', ['$state', '$rootScope', function ($state, $rootScope) {
-
-
+            
             $rootScope.$on('userLoggedIn', function(event, args) {
                 console.log('Im appctrl and I was notified');
             });

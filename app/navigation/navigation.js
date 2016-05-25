@@ -4,21 +4,24 @@
 
     angular.module('myApp')
 
-        .controller('NavigationCtrl', ['$state', '$rootScope', function ($state, $rootScope) {
+        .controller('NavigationCtrl', ['$state', '$rootScope', 'GlobalRolesService', '$scope', function ($state, $rootScope, GlobalRolesService, $scope) {
 
-            var isLoggedIn = this.isLoggedIn;
-            var isAdmin = this.isAdmin;
+            // var isLoggedIn = this.isLoggedIn;
+            // var isAdmin = this.isAdmin;
 
-            var toggleAdmin = function() {
-                $rootScope.isAdmin = !$rootScope.isAdmin;
+            $scope.toggleAdmin = function() {
+                GlobalRolesService.isAdmin = !GlobalRolesService.isAdmin;
+                console.log('isAdmin service: ' + GlobalRolesService.isAdmin);
+                $rootScope.$emit('adminToggle');
                 $state.reload();
-            }
+            };
 
             $rootScope.$on('userLoggedIn', function(event, args) {
+                $scope.isLoggedIn = GlobalRolesService.isLoggedIn;
+            });
 
-                isLoggedIn = $rootScope.isLoggedIn;
-                isAdmin = $rootScope.isAdmin;
-
+            $rootScope.$on('adminToggle', function(event, args) {
+                $scope.isLoggedIn = GlobalRolesService.isLoggedIn;
             });
 
         }]);

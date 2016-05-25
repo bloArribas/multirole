@@ -19,8 +19,8 @@
                 })
         }])
 
-        .controller('LoginCtrl', ['API_SERVER', '$http', '$scope', '$state', 'PermissionStore', 'loginService', 'RoleStore', '$rootScope',
-            function (API_SERVER, $http, $scope, $state, PermissionStore, loginService, RoleStore, $rootScope) {
+        .controller('LoginCtrl', ['API_SERVER', '$http', '$scope', '$state', 'PermissionStore', 'loginService', 'RoleStore', '$rootScope', 'GlobalRolesService',
+            function (API_SERVER, $http, $scope, $state, PermissionStore, loginService, RoleStore, $rootScope, GlobalRolesService) {
 
                 $scope.submit = function () {
 
@@ -28,10 +28,12 @@
 
                         .then(function (data) {
 
-                            $rootScope.isLoggedIn = true;
+                            //$rootScope.isLoggedIn = true;
+                            GlobalRolesService.isLoggedIn = true;
                             $scope.$emit('userLoggedIn');
-
-                            $state.go('dashboard');
+                            $state.go('dashboard', {},
+                                {'notify':true,
+                                'reload': true});
 
                         }, function (error) {
 
